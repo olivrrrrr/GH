@@ -7,6 +7,7 @@ class SearchViewController: UIViewController {
     }
     
     weak var coordinator: AppCoordinator?
+    var viewModel: SearchViewModel!
 
     let logoImageView = UIImageView()
     let usernameTextField = GHTextField()
@@ -43,12 +44,8 @@ class SearchViewController: UIViewController {
             presentGHAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for", buttonTitle: "Okay")
             return
         }
-        let followerListVC = DependencyProvider.followerListVC
-        followerListVC.username = usernameTextField.text
-        followerListVC.title = usernameTextField.text
-        navigationController?.pushViewController(followerListVC, animated: true)
-       // print("bye")
-    // coordinator?.displayFollowerListViewController()
+        guard let username = usernameTextField.text else { return }
+        viewModel.goToFollowerList(username: username)
     }
     
     func configureLogoImageView() {
