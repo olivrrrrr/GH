@@ -9,10 +9,10 @@ import Foundation
 
 
 class SearchViewModel {
-    
-    var appCoordinator: AppCoordinator?
+
+    weak var coordinator: SearchCoordinator?
     
     func goToFollowerList(username: String) {
-        appCoordinator?.goToFollowerList(username: username)
+        coordinator?.goToFollowerList(username: username)
     }
 }

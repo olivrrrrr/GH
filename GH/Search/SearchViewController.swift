@@ -6,8 +6,8 @@ class SearchViewController: UIViewController {
         static let ghLogo = "gh-logo"
     }
     
-    weak var coordinator: AppCoordinator?
     var viewModel: SearchViewModel!
+    weak var coordinator: SearchCoordinator?
 
     let logoImageView = UIImageView()
     let usernameTextField = GHTextField()
@@ -47,7 +47,9 @@ class SearchViewController: UIViewController {
         guard let username = usernameTextField.text else { return }
         viewModel.goToFollowerList(username: username)
     }
-    
+}
+
+extension SearchViewController {
     func configureLogoImageView() {
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +90,6 @@ class SearchViewController: UIViewController {
         ])
     }
 }
-
 
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

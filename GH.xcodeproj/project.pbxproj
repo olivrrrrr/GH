@@ -13,8 +13,10 @@
 		494CEA4D29BCBC1000D6EE7B /* GHBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494CEA4C29BCBC1000D6EE7B /* GHBodyLabel.swift */; };
 		494CEA5029BCBE3500D6EE7B /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494CEA4F29BCBE3500D6EE7B /* AlertViewController.swift */; };
 		494CEA5329BDECA200D6EE7B /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494CEA5229BDECA200D6EE7B /* UIViewController+Ext.swift */; };
-		494CEA5529C7C83F00D6EE7B /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494CEA5429C7C83F00D6EE7B /* SearchCoordinator.swift */; };
 		4968776E29D1C35D00D0EB7C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968776D29D1C35D00D0EB7C /* SearchViewModel.swift */; };
+		4968777029D1D4AA00D0EB7C /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968776F29D1D4AA00D0EB7C /* TabBarCoordinator.swift */; };
+		4968777329D1D91600D0EB7C /* FavouriteListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968777229D1D91600D0EB7C /* FavouriteListCoordinator.swift */; };
+		496877BF29D6061C00D0EB7C /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496877BE29D6061C00D0EB7C /* SearchCoordinator.swift */; };
 		49C2E73629B13FD700F8F0C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2E73529B13FD700F8F0C1 /* AppDelegate.swift */; };
 		49C2E73829B13FD700F8F0C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2E73729B13FD700F8F0C1 /* SceneDelegate.swift */; };
 		49C2E73F29B13FD800F8F0C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49C2E73E29B13FD800F8F0C1 /* Assets.xcassets */; };
@@ -53,8 +55,10 @@
 		494CEA4C29BCBC1000D6EE7B /* GHBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHBodyLabel.swift; sourceTree = "<group>"; };
 		494CEA4F29BCBE3500D6EE7B /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		494CEA5229BDECA200D6EE7B /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
-		494CEA5429C7C83F00D6EE7B /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		4968776D29D1C35D00D0EB7C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		4968776F29D1D4AA00D0EB7C /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		4968777229D1D91600D0EB7C /* FavouriteListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListCoordinator.swift; sourceTree = "<group>"; };
+		496877BE29D6061C00D0EB7C /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		49C2E73229B13FD700F8F0C1 /* GH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C2E73529B13FD700F8F0C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49C2E73729B13FD700F8F0C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +134,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		4968777129D1D8F800D0EB7C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				4968777229D1D91600D0EB7C /* FavouriteListCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		49C2E72929B13FD700F8F0C1 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				49C2E76629B14D8D00F8F0C1 /* AppCoordinator.swift */,
+				4968776F29D1D4AA00D0EB7C /* TabBarCoordinator.swift */,
 				494CEA4729BA553400D6EE7B /* Factory */,
 				494CEA5129BDEC4600D6EE7B /* Extensions */,
 				494CEA4E29BCBDC000D6EE7B /* Alert */,
@@ -198,9 +211,9 @@
 		49C2E76829B236EE00F8F0C1 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				494CEA5429C7C83F00D6EE7B /* SearchCoordinator.swift */,
 				49C2E76929B2370500F8F0C1 /* SearchViewController.swift */,
 				4968776D29D1C35D00D0EB7C /* SearchViewModel.swift */,
+				496877BE29D6061C00D0EB7C /* SearchCoordinator.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -208,6 +221,7 @@
 		49C2E76D29B2374500F8F0C1 /* FavouritesList  */ = {
 			isa = PBXGroup;
 			children = (
+				4968777129D1D8F800D0EB7C /* Coordinator */,
 				49C2E76B29B2373F00F8F0C1 /* FavouriteListViewController.swift */,
 			);
 			path = "FavouritesList ";
@@ -356,11 +370,11 @@
 			files = (
 				494CEA4529B66F3F00D6EE7B /* FollowerListViewController.swift in Sources */,
 				494CEA5329BDECA200D6EE7B /* UIViewController+Ext.swift in Sources */,
+				4968777029D1D4AA00D0EB7C /* TabBarCoordinator.swift in Sources */,
 				49C2E76C29B2373F00F8F0C1 /* FavouriteListViewController.swift in Sources */,
 				494CEA4D29BCBC1000D6EE7B /* GHBodyLabel.swift in Sources */,
 				49C2E76A29B2370500F8F0C1 /* SearchViewController.swift in Sources */,
 				49C2E76729B14D8D00F8F0C1 /* AppCoordinator.swift in Sources */,
-				494CEA5529C7C83F00D6EE7B /* SearchCoordinator.swift in Sources */,
 				49C2E77229B5384000F8F0C1 /* GHTextField.swift in Sources */,
 				49C2E73629B13FD700F8F0C1 /* AppDelegate.swift in Sources */,
 				4968776E29D1C35D00D0EB7C /* SearchViewModel.swift in Sources */,
@@ -368,6 +382,8 @@
 				494CEA4929BA56BE00D6EE7B /* DependencyProvider.swift in Sources */,
 				49C2E77029B28DEE00F8F0C1 /* GHButton.swift in Sources */,
 				494CEA4B29BBCF9B00D6EE7B /* GHTitleLabel.swift in Sources */,
+				4968777329D1D91600D0EB7C /* FavouriteListCoordinator.swift in Sources */,
+				496877BF29D6061C00D0EB7C /* SearchCoordinator.swift in Sources */,
 				49C2E73829B13FD700F8F0C1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
