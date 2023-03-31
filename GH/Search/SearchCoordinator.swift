@@ -1,12 +1,12 @@
 import UIKit
 
 class SearchCoordinator: Coordinator {
-    
+
     weak var parentCoordinator: AppCoordinator?
     
     var navigationController: UINavigationController
     
-    var childCoordinators: [Coordinator] = [] 
+    var childCoordinators: [Coordinator] = []
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -20,6 +20,7 @@ class SearchCoordinator: Coordinator {
         navigationController.pushViewController(searchVC, animated: false)
     }
     
+    
     func goToFollowerList(username: String) {
         let followerListVC = DependencyProvider.followerListVC
         followerListVC.username = username
@@ -30,7 +31,7 @@ class SearchCoordinator: Coordinator {
 //    func didFinishBuying() {
 //        parentCoordinator?.childDidFinish(self)
 //    }
-    
+//
     deinit {
         print("buy deinit")
     }

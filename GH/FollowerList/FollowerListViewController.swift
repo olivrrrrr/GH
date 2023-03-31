@@ -16,10 +16,14 @@ class FollowerListViewController: UIViewController {
         navigationController?.isToolbarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .systemBackground
-        // Do any additional setup after loading the view.
+        
+        NetworkManager.shared.getFollowers(for: username!, page: 1) { followers, errorMessage in
+            guard let followers = followers else {
+                self.presentGHAlertOnMainThread(title: "Bad", message: errorMessage!, buttonTitle: "Ok")
+                return
+            }
+            print(followers)
+        }
     }
-    
-    
-    
-    
+
 }

@@ -19,18 +19,16 @@ final class AppCoordinator: Coordinator {
     func startCoordinator() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-      //  goToSearch()
         goToHome()
-
     }
 
-    func goToSearch() {
-        let child = SearchCoordinator(navigationController: navigationController)
-        child.parentCoordinator = self
-        childCoordinators.append(child)
-        child.startCoordinator()
-    }
-    
+//    func goToSearch() {
+//        let child = SearchCoordinator(navigationController: navigationController)
+//        child.parentCoordinator = self
+//        childCoordinators.append(child)
+//        child.startCoordinator()
+//    }
+//
     func goToHome() {
         // Initiate HomeTabBar Coordinator
         let coordinator = TabBarCoordinator(navigationController: navigationController)
@@ -38,12 +36,5 @@ final class AppCoordinator: Coordinator {
         coordinator.parentCoordinator = self
         coordinator.startCoordinator()
     }
-    
-    
-    func goToFollowerList(username: String) {
-        let followerListVC = DependencyProvider.followerListVC
-        followerListVC.username = username
-        followerListVC.title = username
-        navigationController.pushViewController(followerListVC, animated: true)
-    }
+
 }

@@ -40,7 +40,7 @@ class TabBarCoordinator: Coordinator {
         let favouriteListCoordinator = FavouriteListCoordinator(navigationController: favouriteListNavigationController)
         
         let favouriteListItem = UITabBarItem()
-        favouriteListItem.title = "SEARCH"
+        favouriteListItem.title = "FAVOURITE"
         favouriteListItem.image = UIImage(systemName: "star.fill")
         favouriteListNavigationController.tabBarItem = favouriteListItem
         

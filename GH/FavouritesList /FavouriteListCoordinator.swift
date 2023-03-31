@@ -13,7 +13,7 @@ class FavouriteListCoordinator: Coordinator {
     }
     
     func startCoordinator() {
-        print("HistoryCoordinator Start")
+        print("FavouriteListCoordinator Start")
         
         let vc = FavouriteListViewController() 
         navigationController.pushViewController(vc, animated: false)
