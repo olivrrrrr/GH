@@ -23,6 +23,8 @@ class SearchCoordinator: Coordinator {
     
     func goToFollowerList(username: String) {
         let followerListVC = DependencyProvider.followerListVC
+        let followerListViewModel = FollowerListViewModel()
+        followerListVC.viewModel = followerListViewModel
         followerListVC.username = username
         followerListVC.title = username
         navigationController.pushViewController(followerListVC, animated: true)

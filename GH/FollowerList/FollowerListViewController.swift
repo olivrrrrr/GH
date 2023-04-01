@@ -10,20 +10,14 @@ import UIKit
 class FollowerListViewController: UIViewController {
     
     var username: String?
+    var viewModel: FollowerListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isToolbarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .systemBackground
-        
-        NetworkManager.shared.getFollowers(for: username!, page: 1) { followers, errorMessage in
-            guard let followers = followers else {
-                self.presentGHAlertOnMainThread(title: "Bad", message: errorMessage!.rawValue, buttonTitle: "Ok")
-                return
-            }
-            print(followers)
-        }
+        viewModel.fetchFollowers(username: username!)
     }
 
 }
