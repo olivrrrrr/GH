@@ -1,25 +1,41 @@
 import UIKit
 
 class SearchCoordinator: Coordinator {
-  //  var navigationController: UINavigationController
+
+    weak var parentCoordinator: AppCoordinator?
     
-    let tabBarController: UITabBarController
+    var navigationController: UINavigationController
     
     var childCoordinators: [Coordinator] = []
     
-    init(tabBarController: UITabBarController) {
-        self.tabBarController = tabBarController
-    }
-    
-    func searchNC() -> UINavigationController {
-        let searchVC = DependencyProvider.searchViewController
-        // searchVC.coordinator = self
-        let searchNC = UINavigationController(rootViewController: searchVC)
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        return searchNC
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
     func startCoordinator() {
-        tabBarController.setViewControllers([searchNC()], animated: false)
+        let searchVC = DependencyProvider.searchViewController
+        let searchViewModel = SearchViewModel()
+        searchViewModel.coordinator = self
+        searchVC.viewModel = searchViewModel
+        navigationController.pushViewController(searchVC, animated: false)
     }
+    
+    
+    func goToFollowerList(username: String) {
+        let followerListVC = DependencyProvider.followerListVC
+        let followerListViewModel = FollowerListViewModel()
+        followerListVC.viewModel = followerListViewModel
+        followerListVC.username = username
+        followerListVC.title = username
+        navigationController.pushViewController(followerListVC, animated: true)
+    }
+    
+//    func didFinishBuying() {
+//        parentCoordinator?.childDidFinish(self)
+//    }
+//
+    deinit {
+        print("buy deinit")
+    }
+    
 }
