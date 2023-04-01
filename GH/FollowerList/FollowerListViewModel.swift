@@ -1,15 +1,12 @@
-//
-//  FollowerListViewModel.swift
-//  GH
-//
-//  Created by Oliver Ekwalla on 01/04/2023.
-//
+import Foundation
 
-import UIKit
+protocol AlertDelegate {
+    func didShowAlert(title: String, message: String, buttonTitle: String)
+}
 
-class FollowerListViewModel: UIViewController  {
-
-    weak var coordinator: SearchCoordinator?
+class FollowerListViewModel {
+    
+    var delegate: AlertDelegate?
     
     func fetchFollowers(username: String) {
         NetworkManager.shared.getFollowers(for: username, page: 1) { result in
@@ -17,7 +14,7 @@ class FollowerListViewModel: UIViewController  {
             case .success(let followers):
                 print(followers)
             case .failure(let error):
-                self.presentGHAlertOnMainThread(title: "Bad", message: error.rawValue, buttonTitle: "Ok")
+                self.delegate?.didShowAlert(title: "Bad", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }

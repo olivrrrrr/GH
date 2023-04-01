@@ -7,8 +7,7 @@
 
 import UIKit
 
-class FollowerListViewController: UIViewController {
-    
+class FollowerListViewController: UIViewController, AlertDelegate {
     var username: String?
     var viewModel: FollowerListViewModel!
 
@@ -17,7 +16,11 @@ class FollowerListViewController: UIViewController {
         navigationController?.isToolbarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .systemBackground
+        viewModel.delegate = self
         viewModel.fetchFollowers(username: username!)
     }
-
+    
+    func didShowAlert(title: String, message: String, buttonTitle: String) {
+        self.presentGHAlertOnMainThread(title: title, message: message, buttonTitle: buttonTitle)
+    }
 }
