@@ -1,6 +1,10 @@
 import Foundation
 
-class NetworkManager {
+protocol FollowerServicingType {
+    func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void)
+}
+
+class NetworkManager: FollowerServicingType {
     static let shared = NetworkManager()
     let baseURL = "https://api.github.com/users/"
     

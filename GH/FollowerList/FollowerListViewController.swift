@@ -1,10 +1,3 @@
-//
-//  FollowerListViewController.swift
-//  GH
-//
-//  Created by Oliver Ekwalla on 06/03/2023.
-//
-
 import UIKit
 
 class FollowerListViewController: UIViewController, AlertDelegate {
