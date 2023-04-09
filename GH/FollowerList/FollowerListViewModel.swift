@@ -3,10 +3,11 @@ import Foundation
 protocol AlertDelegate {
     func didShowAlert(title: String, message: String, buttonTitle: String)
     func updateData()
-    var followers: [Follower] { get set }
 }
 
 class FollowerListViewModel {
+    
+    var followersArray: [Follower] = []
     
     var delegate: AlertDelegate?
     
@@ -16,7 +17,7 @@ class FollowerListViewModel {
             switch result{
             case .success(let followers):
                 // TODO: Optimised
-                self.delegate?.followers = followers
+                self.followersArray.append(contentsOf: followers)
                 self.delegate?.updateData()
                 print(followers)
             case .failure(let error):
