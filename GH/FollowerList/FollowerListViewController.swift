@@ -10,7 +10,7 @@ class FollowerListViewController: UIViewController, AlertDelegate {
     var viewModel: FollowerListViewModel!
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-    var followers: [Follower] = [] 
+   // var followers: [Follower] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,8 @@ class FollowerListViewController: UIViewController, AlertDelegate {
     func updateData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(followers)
+//        snapshot.appendItems(followers)
+        snapshot.appendItems(viewModel.followersArray)
         dataSource.apply(snapshot, animatingDifferences: true)
         
     }

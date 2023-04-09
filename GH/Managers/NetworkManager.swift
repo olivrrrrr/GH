@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 protocol FollowerServicingType {
     func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void)
@@ -6,7 +6,8 @@ protocol FollowerServicingType {
 
 class NetworkManager: FollowerServicingType {
     static let shared = NetworkManager()
-    let baseURL = "https://api.github.com/users/"
+    private let baseURL = "https://api.github.com/users/"
+    let cache = NSCache<NSString, UIImage>()
     
     private init() {}
     
