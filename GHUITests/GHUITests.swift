@@ -24,6 +24,10 @@ final class GHUITests: XCTestCase {
         return XCUIApplication().textFields["Enter a username"]
     }
     
+    private var collectionView: XCUIElement {
+        return XCUIApplication().collectionViews["Collection View"]
+    }
+    
     func whenISelectSearchFollowersButton() {
         XCTContext.runActivity(named: #function) { _ in
             searchFollowersButton.tap()
@@ -37,6 +41,10 @@ final class GHUITests: XCTestCase {
         }
     }
     
+    func thenIShouldSeeACollectionView() {
+        XCTAssertTrue(collectionView.exists)
+    }
+    
     func thenIShouldSeeSearchFollowersButton() {
         XCTAssertTrue(searchFollowersButton.exists)
     }
@@ -45,15 +53,15 @@ final class GHUITests: XCTestCase {
         XCTAssertTrue(usernameTextField.exists)
     }
 
-    func testExample() throws {
+    func testGithubFollowersDisplayed() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
         
         thenIShouldSeeUsernameTextField()
         whenITapUsernameFieldAndWriteDetails()
-    
-        XCUIApplication().collectionViews.firstMatch
+        
+        thenIShouldSeeACollectionView()
     }
 
     func testLaunchPerformance() throws {
