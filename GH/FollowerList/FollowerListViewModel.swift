@@ -16,7 +16,6 @@ class FollowerListViewModel {
             guard let self = self else { return }
             switch result{
             case .success(let followers):
-                // TODO: Optimised
                 self.followersArray.append(contentsOf: followers)
                 self.delegate?.updateData()
                 print(followers)
