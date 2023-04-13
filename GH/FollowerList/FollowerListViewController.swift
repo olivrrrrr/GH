@@ -7,15 +7,15 @@ class FollowerListViewController: UIViewController, AlertDelegate {
     }
    
     var username: String?
+    var page: Int = 1
     var viewModel: FollowerListViewModel!
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-   // var followers: [Follower] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        viewModel.fetchFollowers(username: username!)
+        viewModel.fetchFollowers(username: username!, page: page)
         configureCollectionView()
         configureViewController()
         configureDataSource()
@@ -33,8 +33,10 @@ class FollowerListViewController: UIViewController, AlertDelegate {
     
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.collectionThreeColumnFlowLayout(for: view))
+        collectionView.accessibilityIdentifier = "Collection View"
         view.addSubview(collectionView)
       //  collectionView.backgroundColor = .systemRed
+        collectionView.delegate = self
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseIdentifier)
     }
     
@@ -52,6 +54,21 @@ class FollowerListViewController: UIViewController, AlertDelegate {
 //        snapshot.appendItems(followers)
         snapshot.appendItems(viewModel.followersArray)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension FollowerListViewController: UICollectionViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate delecerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height  = scrollView.frame.size.height
         
+        if offsetY > contentHeight - height {
+            guard viewModel.hasMoreFollowers else { return }
+            self.page += 1
+            // guard let username = username else { return }
+            viewModel.fetchFollowers(username: username!, page: page)
+        }
     }
 }

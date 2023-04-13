@@ -42,15 +42,15 @@ final class GHUITests: XCTestCase {
     }
     
     func thenIShouldSeeACollectionView() {
-        XCTAssertTrue(collectionView.exists)
+        XCTAssertTrue(collectionView.exists, "Collect view not found")
     }
     
     func thenIShouldSeeSearchFollowersButton() {
-        XCTAssertTrue(searchFollowersButton.exists)
+        XCTAssertTrue(searchFollowersButton.exists, "Search followers button not found")
     }
     
     func thenIShouldSeeUsernameTextField() {
-        XCTAssertTrue(usernameTextField.exists)
+        XCTAssertTrue(usernameTextField.exists, "Username textfield not found")
     }
 
     func testGithubFollowersDisplayed() throws {
