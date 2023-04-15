@@ -2,6 +2,8 @@ import Foundation
 
 protocol AlertDelegate {
     func didShowAlert(title: String, message: String, buttonTitle: String)
+    func didShowLoadingView()
+    func didDismissLoadingView()
     func updateData()
 }
 
@@ -12,9 +14,10 @@ class FollowerListViewModel {
     var delegate: AlertDelegate?
     
     func fetchFollowers(username: String, page: Int) {
-        print(page)
+        self.delegate?.didShowLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
+            self.delegate?.didDismissLoadingView()
             switch result{
             case .success(let followers):
                 if followers.count < 30 { self.hasMoreFollowers = false }
