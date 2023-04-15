@@ -24,6 +24,14 @@ class FollowerListViewController: UIViewController, AlertDelegate {
     func didShowAlert(title: String, message: String, buttonTitle: String) {
         self.presentGHAlertOnMainThread(title: title, message: message, buttonTitle: buttonTitle)
     }
+    
+    func didShowLoadingView() {
+        self.showLoadingView()
+    }
+    
+    func didDismissLoadingView() {
+        self.dismissLoadingView()
+    }
 
     func configureViewController() {
         navigationController?.isToolbarHidden = false
@@ -51,7 +59,6 @@ class FollowerListViewController: UIViewController, AlertDelegate {
     func updateData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
-//        snapshot.appendItems(followers)
         snapshot.appendItems(viewModel.followersArray)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
